@@ -10,4 +10,8 @@ class InventorySerializer(serializers.ModelSerializer):
             'color',
             'size',
             'option',
+            'quantity',
+        )
+        read_only_fields = (
+            'quantity',
         )
