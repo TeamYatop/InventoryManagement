@@ -12,15 +12,11 @@
 ```None```
 
 ### Data Params
-| Name     | Value                        | Type    |
-| -------- |----------------------------- | ------- |
-| action   | action type of the task      | string  |
-| name     | name of the target product   | string  |
-| color    | color of the target product  | string  |
-| type     | type of the target product   | string  |
-| size     | size of the target product   | string  |
-| option   | option of the target product | string  |
-| quantity | quantity of the task         | int(>0) |
+| Name      | Value                   | Type    |
+| --------- |------------------------ | ------- |
+| action    | action type of the task | string  |
+| inventory | target inventory        | string  |
+| value     | value of the task       | int(>0) |
 
 ## Response
 
@@ -41,26 +37,17 @@
 
 ### Error Response
 - Code: 400
-- Reason: missing required filed(s)(action, name, color, size, option, quantity)
+- Reason: missing required filed(s)(action, inventory, quantity)
 - Content:
 ```
 {
     "action": [
         "This field is required."
     ],
-    "name": [
+    "inventory": [
         "This field is required."
     ],
-    "color": [
-        "This field is required."
-    ],
-    "type": [
-        "This field is required."
-    ],
-    "size": [
-        "This field is required."
-    ],
-    "quantity": [
+    "value": [
         "This field is required."
     ],
 }
@@ -74,10 +61,7 @@ $.ajax({
     dataType: 'json',
     data: {
         'action': 'ADD',
-        'name': 'ghost',
-        'color': 'back',
-        'size': 'XS',
-        'option': 'NA',
+        'inventory': 2,
         'quntity': 55
     }
 })
