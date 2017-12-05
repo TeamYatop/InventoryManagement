@@ -1,5 +1,5 @@
 ## InventoryCreate
-> 재고 생성을 위한 API
+> API for inventory create
 
 ## Request
 ### URL
