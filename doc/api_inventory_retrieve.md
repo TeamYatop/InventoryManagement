@@ -9,10 +9,12 @@
 ```GET```
 
 ### URL Params
-| Name  | Value                | Type   |
-| ----- |--------------------- | ------ |
-| name  | name of the product  | string |
-| color | color of the product | string |
+| Name   | Value                 | Type   |
+| ------ |---------------------- | ------ |
+| name   | name of the product   | string |
+| color  | color of the product  | string |
+| size   | size of the product   | string |
+| option | option of the product | string |
 
 ### Data Params
 ```None```
@@ -26,20 +28,11 @@
 
 ```
 {
-    "pk": 1,
     "name": "ghost",
     "color": "black",
-
-    "quantities":
-    {
-        "xxs": 0,
-        "xs": 0,
-        "s": 55,
-        "m": 60,
-        "l": 140,
-        "xl": 0,
-        "xxl": 0,
-    }
+    "size": "XS",
+    "option": "NA",
+    "quntity": 0
 }
 ```
 
@@ -56,6 +49,12 @@
     ],
     "color": [
         "This field is required."
+    ],
+    "size": [
+        "This field is required."
+    ],
+    "option": [
+        "This field is required."
     ]
 }
 ```
@@ -67,8 +66,10 @@ $.ajax({
     type: 'POST',
     dataType: 'json',
     data: {
-        name: 'ghost',
-        color: 'black'
+        'name': 'ghost',
+        'color': 'back',
+        'size': 'XS',
+        'option': 'NA',
     }
 })
 .done(function(response) {
