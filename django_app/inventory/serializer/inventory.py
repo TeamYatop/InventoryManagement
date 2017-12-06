@@ -15,3 +15,14 @@ class InventorySerializer(serializers.ModelSerializer):
         read_only_fields = (
             'quantity',
         )
+
+
+class InventoryInfoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Inventory
+        fields = (
+            'name',
+            'color',
+            'size',
+            'option',
+        )
