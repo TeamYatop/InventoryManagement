@@ -10,15 +10,12 @@
 | quantity | quantity of the product  | int(>=0) | default(0)      |
 
 ### Task
-| Name     | Value                | Type     | options         |
-| -------- |--------------------- | -------- | --------------- |
-| date     | date of the task     | datetime | default(NOW)    |
-| action   | type of the task     | string   | choice(ACTIONS) |
-| name     | name of the product  | string   |                 |
-| color    | color of the product | string   |                 |
-| type     | type of the product  | string   | choice(COLOR)   |
-| size     | size of the product  | string   | choice(OPTIONS) |
-| quantity | quantity of the task | int(>=0) | default(0)      |
+| Name      | Value             | Type     | options           |
+| --------- |------------------ | -------- | ----------------- |
+| date      | date of the task  | datetime | auto_add_now=True |
+| action    | type of the task  | string   | choice(ACTIONS)   |
+| inventory | target inventory  | fk       |                   |
+| value     | value of the task | int(>=0) | default(0)        |
 
 ## CHOICES
 
@@ -41,7 +38,7 @@
 | L2   | l2          |
 
 ### ACTIONS
-| Name | Value           |
-| ---- | --------------- |
-| ADD  | add products    |
-| DEL  | delete products |
+| Name | Value              |
+| ---- | ------------------ |
+| ADD  | task inventory add |
+| SUB  | task inventory sub |
