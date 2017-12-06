@@ -15,6 +15,9 @@ OPTION_CODE = (
 
 
 class Inventory(models.Model):
+    class Meta:
+        unique_together = (("name", "color", "size", "option"),)
+
     name = models.CharField(max_length=60)
     color = models.CharField(max_length=40)
     size = models.CharField(max_length=3, choices=SIZE_CODE)
