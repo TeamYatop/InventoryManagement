@@ -8,7 +8,7 @@ ACTION_CODE = (
 
 
 class Task(models.Model):
-    inventory = models.ForeignKey(inventory.Inventory)
+    inventory = models.ForeignKey(inventory.Inventory, on_delete=models.PROTECT)
     date = models.DateField(auto_now_add=True)
     action = models.CharField(max_length=4, choices=ACTION_CODE)
     value = models.PositiveIntegerField()
