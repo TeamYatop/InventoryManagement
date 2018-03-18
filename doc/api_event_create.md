@@ -1,5 +1,5 @@
-## InventoryUpdate
-> 재고 변경을 이벤트 생성을 위한 API
+## EventCreate
+> API for event create
 
 ## Request
 ### URL
@@ -18,54 +18,52 @@
 | description | description of event | string |
 | events      | detailed sub events  | list   |
 
-
 ## Response
 
 ### Success Response
 - Code: 201
 - Content:
-
-
 ```
 {
     "title": "sample product stock event",
     "description": "detailed description for event",
-    "datetime": "2017.12.03 14:55:56",
+    "date": "2017.12.03",
     "events": [
         {
+            "action": "ADD",
             "name": "ghost",
             "color": "black",
-            "type": "ADD",
             "size": "S",
-            "quantity": 45
+            "option": "NA",
+            "quntity": 45
         },
         {
+            "action": "ADD",
             "name": "ghost",
             "color": "black",
-            "type": "ADD",
             "size": "M",
-            "quantity": 100
+            "option": "NA",
+            "quntity": 100
         },
         {
+            "action": "ADD",
             "name": "ghost",
             "color": "black",
-            "type": "ADD",
-            "size": "L",
-            "quantity": 75
-        },
+            "size": "XL",
+            "option": "NA",
+            "quntity": 75
+        }
     ]
 }
 ```
 
 ### Error Response
 - Code: 400
-- Reason: 키가 없는 경우
+- Reason: missing required filed(s)(title, description, events)
 - Content:
-
-
 ```
 {
-    "name": [
+    "title": [
         "This field is required."
     ],
     "description": [
@@ -80,35 +78,38 @@
 ## Sample Call
 ```
 $.ajax({
-    url: 'ROOT/api/inventory/',
+    url: 'ROOT/api/event/',
     type: 'POST',
     dataType: 'json',
     data: {
-    "title": "sample product stock event",
-    "description": "detailed description for event",
-    "events": [
-        {
-            "name": "ghost",
-            "color": "black",
-            "type": "ADD",
-            "size": "S",
-            "quantity": 45
-        },
-        {
-            "name": "ghost",
-            "color": "black",
-            "type": "ADD",
-            "size": "M",
-            "quantity": 100
-        },
-        {
-            "name": "ghost",
-            "color": "black",
-            "type": "ADD",
-            "size": "L",
-            "quantity": 75
-        },
-    ]
+        "title": "sample product stock event",
+        "description": "detailed description for event",
+        "events": [
+            {
+                "action": "ADD",
+                "name": "ghost",
+                "color": "black",
+                "size": "S",
+                "option": "NA",
+                "quntity": 45
+            },
+            {
+                "action": "ADD",
+                "name": "ghost",
+                "color": "black",
+                "size": "M",
+                "option": "NA",
+                "quntity": 100
+            },
+            {
+                "action": "ADD",
+                "name": "ghost",
+                "color": "black",
+                "size": "XL",
+                "option": "NA",
+                "quntity": 75
+            }
+        ]
     }
 })
 .done(function(response) {
