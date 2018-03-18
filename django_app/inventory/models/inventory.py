@@ -31,3 +31,16 @@ class Inventory(models.Model):
             self.size,
             self.option,
         )
+
+    @classmethod
+    def get_by_name_color_pairs(cls):
+        queryset = Inventory.objects.all()
+
+        inventory_in_name_color_pair = dict()
+        for inventory in queryset:
+            name_color = "{}:{}".format(inventory.name, inventory.color)
+            if name_color not in inventory_in_name_color_pair:
+                inventory_in_name_color_pair[name_color] = dict()
+            inventory_in_name_color_pair[name_color][inventory.size] = inventory.quantity
+
+        return inventory_in_name_color_pair

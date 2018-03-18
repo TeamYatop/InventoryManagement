@@ -8,5 +8,5 @@ class InventoryListView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['inventory_list'] = Inventory.objects.all()
+        context['inventory_list'] = Inventory.get_by_name_color_pairs()
         return context

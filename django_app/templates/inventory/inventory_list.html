@@ -3,6 +3,9 @@
 {% block content %}
 
 <style>
+table {
+    width: 75%;
+}
 table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
@@ -11,38 +14,38 @@ th, td {
     padding: 5px;
     text-align: left;
 }
+
+
 </style>
 
 <h2>재고 목록 페이지</h2>
 
-<table style="width:80%">
-    <caption>Dynamic Table</caption>
+<table id="dynamic-table">
+    <caption>재고</caption>
     <tr>
-        <th>name:color</th>
-        <th>size</th>
-        <th>option</th>
-        <th>quantity</th>
+        <th rowspan="2">종류</th>
+        <th colspan="7">사이즈</th>
     </tr>
-{% for inventory in inventory_list %}
     <tr>
-        <td>{{ inventory.name }}:{{ inventory.color }}</td>
-        <td>{{ inventory.size }}</td>
-        <td>{{ inventory.option }}</td>
-        <td>{{ inventory.quantity }}</td>
+        <th>XXS</th>
+        <th>XS</th>
+        <th>S</th>
+        <th>M</th>
+        <th>L</th>
+        <th>XL</th>
+        <th>XXL</th>
     </tr>
-{% endfor %}
 </table>
 
-<hr>
+<br><hr><br>
 
-<table style="width:80%">
-    <caption>Static Table</caption>
+<table>
+    <caption>재고</caption>
     <tr>
-        <th>name:color</th>
-        <th colspan="7">size</th>
+        <th rowspan="2">종류</th>
+        <th colspan="7">사이즈</th>
     </tr>
     <tr>
-        <th>|</th>
         <th>XXS</th>
         <th>XS</th>
         <th>S</th>
@@ -82,5 +85,44 @@ th, td {
         <td>0</td>
     </tr>
 </table>
+
+<script>
+var size_order = ["XXS", "XS", "S", "M", "L", "XL", "XXL"];
+
+var inventory = {};
+{% for inventory_key, inventory in inventory_list.items %}
+
+var data = {};
+{% for size_key, size in inventory.items %}
+data['{{ size_key }}'] = {{ size }};
+{% endfor %}
+
+inventory['{{ inventory_key }}'] = data;
+{% endfor %}
+
+
+var table = document.getElementById("dynamic-table");
+
+Object.keys(inventory).forEach(function(key) {
+    var item = inventory[key];
+    var row = table.insertRow(-1);
+    var name_col = row.insertCell(-1);
+
+    name_col.innerHTML = key;  // todo : 재품 이름 콜론, 디자인 추가하기
+
+    for (var i = 0; i < size_order.length; i++) {
+        size = size_order[i];
+        var col = row.insertCell(-1);
+
+        var quantity = 0;
+        if (item.hasOwnProperty(size)) {
+            quantity = item[size];
+        }
+
+        col.innerHTML = quantity;  // todo : 재품 사이즈 콜론, 디자인 추가하기
+    }
+});
+
+</script>
 
 {% endblock %}
