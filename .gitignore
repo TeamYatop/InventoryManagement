@@ -1,8 +1,10 @@
 
 # Created by https://www.gitignore.io/api/macos,linux,python,django,pycharm
 
-# Custom
+### Custom ###
 .idea
+.conf-secret/
+.vscode
 
 ### Django ###
 *.log

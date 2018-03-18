@@ -1,4 +1,5 @@
 from rest_framework import serializers
+
 from inventory.models import Task
 from inventory.serializer import InventoryInfoSerializer
 

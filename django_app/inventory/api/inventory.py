@@ -1,4 +1,5 @@
 from rest_framework import generics, mixins
+
 from inventory.models import Inventory
 from inventory.serializer import InventorySerializer
 
@@ -14,7 +15,3 @@ class InventoryAPI(mixins.ListModelMixin,
 
     def post(self, requset, *args, **kwargs):
         return self.create(requset, *args, **kwargs)
-
-# class InventoryAPI(generics.GenericAPIView):
-#     queryset = Inventory.objects.all()
-#     serializer_class = InventorySerializer

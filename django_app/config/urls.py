@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from inventory.urls import urlpatterns as inventoryapi_url
+
+from inventory.urls import urlpatterns as inventory_api_url
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^api/', include(inventoryapi_url))
+    url(r'^api/', include(inventory_api_url))
 ]
