@@ -1,0 +1,86 @@
+{% extends 'common/base.html' %}
+
+{% block content %}
+
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+</style>
+
+<h2>재고 목록 페이지</h2>
+
+<table style="width:80%">
+    <caption>Dynamic Table</caption>
+    <tr>
+        <th>name:color</th>
+        <th>size</th>
+        <th>option</th>
+        <th>quantity</th>
+    </tr>
+{% for inventory in inventory_list %}
+    <tr>
+        <td>{{ inventory.name }}:{{ inventory.color }}</td>
+        <td>{{ inventory.size }}</td>
+        <td>{{ inventory.option }}</td>
+        <td>{{ inventory.quantity }}</td>
+    </tr>
+{% endfor %}
+</table>
+
+<hr>
+
+<table style="width:80%">
+    <caption>Static Table</caption>
+    <tr>
+        <th>name:color</th>
+        <th colspan="7">size</th>
+    </tr>
+    <tr>
+        <th>|</th>
+        <th>XXS</th>
+        <th>XS</th>
+        <th>S</th>
+        <th>M</th>
+        <th>L</th>
+        <th>XL</th>
+        <th>XXL</th>
+    </tr>
+    <tr>
+        <td>T-Shirt:Red</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>T-Shirt:White</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>Jeans:Black</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+        <td>0</td>
+    </tr>
+</table>
+
+{% endblock %}
