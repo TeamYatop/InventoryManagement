@@ -1,7 +1,8 @@
-from django.conf.urls import url
-from inventory import api
+from django.urls import path
+
+from . import api
 
 urlpatterns = [
-    url(r'^inventory/$', api.InventoryAPI.as_view(), name='inventory'),
-    url(r'^task/$', api.TaskAPI.as_view(), name='task')
+    path('inventory/', api.InventoryAPI.as_view(), name='inventory'),
+    path('task/', api.TaskAPI.as_view(), name='task'),
 ]
